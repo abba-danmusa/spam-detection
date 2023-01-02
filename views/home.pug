@@ -1,0 +1,146 @@
+doctype html
+head
+  title W3.CSS Template
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css')
+  link(href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  script(src='/dist/App.bundle.js')
+  style.
+    html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif}
+    .w3-bar-block .w3-bar-item {padding: 16px}
+// Side Navigation
+nav#mySidebar.w3-sidebar.w3-bar-block.w3-collapse.w3-white.w3-animate-left.w3-card(style='z-index:3;width:320px;')
+  a.w3-bar-item.w3-button.w3-border-bottom.w3-large(href='javascript:void(0)')
+    img(src='https://www.w3schools.com/images/w3schools.png' style='width:60%;')
+  a.w3-bar-item.w3-button.w3-hide-large.w3-large(href='javascript:void(0)' onclick='w3_close()' title='Close Sidemenu')
+    | Close 
+    i.fa.fa-remove
+  a.w3-bar-item.w3-button.w3-dark-grey.w3-button.w3-hover-black.w3-left-align#compose(href='javascript:void(0)' onclick="document.getElementById('id01').style.display='block'")
+    | New Message 
+    i.w3-padding.fa.fa-pencil
+  a#myBtn.w3-bar-item.w3-button(onclick="myFunc('Demo1')" href='javascript:void(0)')
+    i.fa.fa-inbox.w3-margin-right
+    | Inbox (3)
+    i.fa.fa-caret-down.w3-margin-left
+  #Demo1.w3-hide.w3-animate-left
+    a#firstTab.w3-bar-item.w3-button.w3-border-bottom.test.w3-hover-light-grey(href='javascript:void(0)' onclick="openMail('Borge');w3_close();")
+      .w3-container
+        img.w3-round.w3-margin-right(src='/images/avatar3.png' style='width:15%;')
+        span.w3-opacity.w3-large Borge Refsnes
+        h6 Subject: Remember Me
+        p Hello, i just wanted to let you know that i&apos;ll be home at...
+    a.w3-bar-item.w3-button.w3-border-bottom.test.w3-hover-light-grey(href='javascript:void(0)' onclick="openMail('Jane');w3_close();")
+      .w3-container
+        img.w3-round.w3-margin-right(src='/images/avatar3.png' style='width:15%;')
+        span.w3-opacity.w3-large Jane Doe
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+    a.w3-bar-item.w3-button.w3-border-bottom.test.w3-hover-light-grey(href='javascript:void(0)' onclick="openMail('John');w3_close();")
+      .w3-container
+        img.w3-round.w3-margin-right(src='/images/avatar3.png' style='width:15%;')
+        span.w3-opacity.w3-large John Doe
+        p Welcome!
+  a.w3-bar-item.w3-button(href='#')
+    i.fa.fa-paper-plane.w3-margin-right
+    | Sent
+  a.w3-bar-item.w3-button(href='#')
+    i.fa.fa-hourglass-end.w3-margin-right
+    | Drafts
+  a.w3-bar-item.w3-button(href='#')
+    i.fa.fa-trash.w3-margin-right
+    | Trash
+// Modal that pops up when you click on "New Message"
+#domCommentModal.w3-modal(style='z-index:4')
+  .w3-modal-content.w3-animate-zoom
+    .w3-container.w3-padding.w3-red
+      span.w3-button.w3-red.w3-right.w3-xxlarge(onclick="document.getElementById('domCommentModal').style.display='none'")
+        i.fa.fa-remove
+      h2#domComment
+#id01.w3-modal(style='z-index:4; display: block')
+  .w3-modal-content.w3-animate-zoom
+    .w3-container.w3-padding.w3-red
+      span.w3-button.w3-red.w3-right.w3-xxlarge(onclick="document.getElementById('id01').style.display='none'")
+        i.fa.fa-remove
+      h2 Send Mail
+    .w3-panel
+      form#form
+        label To
+        input.w3-input.w3-border.w3-margin-bottom(type='text')
+        label From
+        input.w3-input.w3-border.w3-margin-bottom(type='text')
+        label Subject
+        input.w3-input.w3-border.w3-margin-bottom(type='text')
+        input.w3-input.w3-border.w3-margin-bottom#rawText(style='height:150px' placeholder="What's on your mind?")
+        .w3-section
+          a.w3-button.w3-red(onclick="document.getElementById('id01').style.display='none'")
+            | Cancel &nbsp;
+            i.fa.fa-remove
+          a.w3-button.w3-light-grey.w3-right#sendBtn()
+            | Send &nbsp;
+            i.fa.fa-paper-plane
+// Overlay effect when opening the side navigation on small screens
+#myOverlay.w3-overlay.w3-hide-large.w3-animate-opacity(onclick='w3_close()' style='cursor:pointer' title='Close Sidemenu')
+// Page content
+.w3-main(style='margin-left:320px;')
+  i.fa.fa-bars.w3-button.w3-white.w3-hide-large.w3-xlarge.w3-margin-left.w3-margin-top(onclick='w3_open()')
+  a.w3-hide-large.w3-red.w3-button.w3-right.w3-margin-top.w3-margin-right(href='javascript:void(0)' onclick="document.getElementById('id01').style.display='block'")
+    i.fa.fa-pencil
+  #Borge.w3-container.person
+    br
+    img.w3-round.w3-animate-top(src='/images/avatar3.png' style='width:20%;')
+    h5.w3-opacity Subject: Remember Me
+    h4
+      i.fa.fa-clock-o
+      |  From Borge Refsnes, Sep 27, 2015.
+    a.w3-button.w3-light-grey(href='#')
+      | Reply
+      i.w3-margin-left.fa.fa-mail-reply
+    a.w3-button.w3-light-grey(href='#')
+      | Forward
+      i.w3-margin-left.fa.fa-arrow-right
+    hr
+    p
+      | Hello, i just wanted to let you know that i&apos;ll be home at lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    p
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    p
+      | Best Regards, 
+      br
+      | Borge Refsnes
+  #Jane.w3-container.person
+    br
+    img.w3-round.w3-animate-top(src='/images/avatar3.png' style='width:20%;')
+    h5.w3-opacity Subject: None
+    h4
+      i.fa.fa-clock-o
+      |  From Jane Doe, Sep 25, 2015.
+    a.w3-button.w3-light-grey
+      | Reply
+      i.w3-margin-left.fa.fa-mail-reply
+    a.w3-button.w3-light-grey
+      | Forward
+      i.w3-margin-left.fa.fa-arrow-right
+    hr
+    p
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    p
+      | Forever yours,
+      br
+      | Jane
+  #John.w3-container.person
+    br
+    img.w3-round.w3-animate-top(src='/images/avatar3.png' style='width:20%;')
+    h5.w3-opacity Subject: None
+    h4
+      i.fa.fa-clock-o
+      |  From John Doe, Sep 23, 2015.
+    a.w3-button.w3-light-grey
+      | Reply
+      i.w3-margin-left.fa.fa-mail-reply
+    a.w3-button.w3-light-grey
+      | Forward
+      i.w3-margin-left.fa.fa-arrow-right
+    hr
+    p Welcome.
+    p That&apos;s it!
